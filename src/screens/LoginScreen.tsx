@@ -1,4 +1,5 @@
 import React, {useContext, useEffect} from 'react';
+import SplashScreen from 'react-native-splash-screen';
 import {
   TextInput,
   Text,
@@ -27,6 +28,7 @@ export const LoginScreen = ({navigation}: Props) => {
   });
 
   useEffect(() => {
+    SplashScreen.hide();
     if (errorMessage.length === 0) {
       return;
     }

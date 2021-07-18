@@ -5,7 +5,6 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
   TouchableHighlight,
 } from 'react-native';
 import {MedicamentosStackParams} from '../navigator/MedicamentosNavigator';
