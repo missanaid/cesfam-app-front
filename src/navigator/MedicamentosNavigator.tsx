@@ -22,7 +22,7 @@ export const MedicamentosNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         cardStyle: {
-          backgroundColor: 'white',
+          backgroundColor: '#e0f6ff',
         },
         headerStyle: {
           elevation: 0,

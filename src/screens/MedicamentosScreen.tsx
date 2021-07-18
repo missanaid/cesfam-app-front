@@ -27,7 +27,12 @@ export const MedicamentosScreen = ({navigation}: Props) => {
           activeOpacity={0.8}
           style={{marginRight: 10}}
           onPress={logOut}>
-          <Text style={{fontSize: 15, color: '#ffffff', fontWeight: 'bold'}}>
+          <Text
+            style={{
+              fontSize: 15,
+              color: '#ffffff',
+              fontWeight: 'bold',
+            }}>
             Cerrar Sesión
           </Text>
         </TouchableOpacity>
@@ -39,16 +44,17 @@ export const MedicamentosScreen = ({navigation}: Props) => {
     await loadMedicamentos();
     setIsRefreshing(false);
   };
+
   return (
-    <View style={{flex: 1, marginHorizontal: 10, paddingTop: 10}}>
+    <View style={styles.container}>
       <FlatList
         data={medicamentos}
         keyExtractor={m => m.Id}
         renderItem={({item}) => (
-          <View style={styles.viewstyle}>
+          <View style={styles.item2}>
             <TouchableOpacity
+              style={styles.wrapText}
               activeOpacity={0.8}
-              style={styles.viewstyle}
               onPress={() =>
                 navigation.navigate('MedicamentoScreen', {
                   id: item.Id,
@@ -59,7 +65,11 @@ export const MedicamentosScreen = ({navigation}: Props) => {
                   type: item['Tipo de Medicamento'],
                 })
               }>
-              <Text style={styles.medTitle}>{item.Nombre}</Text>
+              <Text style={styles.medTitle}>{item.Nombre} </Text>
+              <View style={styles.projectText}>
+                <Text style={styles.medStock}>En Stock: {item.Stock}</Text>
+                <Text style={styles.verMas}>&#8250; </Text>
+              </View>
             </TouchableOpacity>
           </View>
         )}
@@ -76,19 +86,44 @@ export const MedicamentosScreen = ({navigation}: Props) => {
 };
 
 const styles = StyleSheet.create({
-  medInfo: {
-    fontSize: 20,
-  },
   medTitle: {
-    fontSize: 25,
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  medStock: {
+    fontSize: 16,
+  },
+  verMas: {
+    fontSize: 20,
+    color: '#0084ff',
+    fontWeight: 'bold',
   },
   itemSeparator: {
-    borderBottomWidth: 2,
-    marginVertical: 5,
-    borderBottomColor: 'rgba(0,0,0,0.1)',
+    marginVertical: 3,
+    borderBottomWidth: 1,
+    borderBottomColor: '#0084ff60',
   },
-  button: {
-    color: '#ffffff',
+  items: {
+    flex: 1,
+    flexDirection: 'column',
+    margin: 1,
   },
-  viewstyle: {},
+  wrapText: {
+    flex: 1,
+    marginLeft: 10,
+  },
+  container: {
+    flex: 1,
+    marginHorizontal: 10,
+    paddingTop: 10,
+  },
+  item2: {
+    flexDirection: 'row',
+    padding: 8,
+    alignItems: 'center',
+  },
+  projectText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });

@@ -25,7 +25,7 @@ export const Navigator = () => {
       screenOptions={{
         headerShown: false,
         cardStyle: {
-          backgroundColor: 'white',
+          backgroundColor: '#e0f6ff',
         },
       }}>
       {status !== 'authenticated' ? (
